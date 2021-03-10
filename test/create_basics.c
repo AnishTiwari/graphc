@@ -10,9 +10,6 @@ void print_matrix(int** mat, int r, int c){
 	printf("\n");
   }
 
-
-			     
-
 }
 
 int main(){
@@ -30,6 +27,7 @@ int main(){
   /* add edges */
   add_edge(my_graph, 1, 20, 2);
   add_edge(my_graph, 2, 30, 3);  
+  add_edge(my_graph, 1, 40, 3);  
 
   /* printf adjacency mateix */
   int** matrix = create_adjacency_matrix(my_graph);

@@ -27,11 +27,9 @@ struct vertex{
 };
 
 struct graph{
-
   int vertex_count;
   int edge_count;
   v_t vertex;
-  
 };
 
 #endif

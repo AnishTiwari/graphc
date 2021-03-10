@@ -8,8 +8,10 @@ g_t create_graph(){
 
   g_t new_graph  = malloc(sizeof(g));
 
+  /* check for allocation from malloc */
   IS_MEMORY_ALLOCATED(new_graph);
-  
+
+  /* set to initial values */
   new_graph->vertex_count = 0;
   new_graph->edge_count = 0;
   new_graph->vertex = NULL;
@@ -37,17 +39,15 @@ void add_vertex(g_t g, int vertex_name){
   new_vertex->next_vertex = NULL;
   new_vertex->v_edge_count =0;
 
-  /* check if its the first node in the graph */
+  /* check if it's the first node in the graph */
   if(g->vertex_count == 0){
-
     g->vertex = malloc(sizeof(v));
     IS_MEMORY_ALLOCATED(g->vertex);
     g->vertex[0] = *new_vertex;
-
   }
   
   else{
-    g->vertex = realloc( g->vertex, sizeof(v) * (g->vertex_count+1));
+    g->vertex = realloc( g->vertex, sizeof(v) * (g->vertex_count + 1));
     IS_MEMORY_ALLOCATED(g->vertex);
     g->vertex[g->vertex_count] = *new_vertex;
   }
@@ -55,7 +55,6 @@ void add_vertex(g_t g, int vertex_name){
   g->vertex_count++;
 
 }
-
 
 void add_edge(g_t g, int from, int weight, int to){
   
@@ -72,22 +71,20 @@ void add_edge(g_t g, int from, int weight, int to){
     printf("No such node named \"%d\" found", from); 
   }
 
-  /* check if its the first edge to the from node */
+  /* check if its the first edge from the from node */
   if(from_vertex->v_edge_count == 0){
     from_vertex->edge =  malloc(sizeof(e));
     IS_MEMORY_ALLOCATED(from_vertex->edge);
     
     from_vertex->edge[0] = *new_edge;
-      
   }
   
   else{
     from_vertex->edge = realloc( from_vertex->edge, sizeof(e) * (from_vertex->v_edge_count+1));
-    IS_MEMORY_ALLOCATED(from_vertex->edge);
-    
+    IS_MEMORY_ALLOCATED(from_vertex->edge);  
     from_vertex->edge[from_vertex->v_edge_count] = *new_edge;
   }
-
+  
   from_vertex->v_edge_count++;
   g->edge_count++;
   
